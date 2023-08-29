@@ -1,19 +1,10 @@
-const decrementButton = document.querySelector("[data-action='decrement']");
-  const incrementButton = document.querySelector("[data-action='increment']");
-  const valueSpan = document.getElementById('value');
+const inputField = document.querySelector('#name-input');
+const nameLabel = document.querySelector('#name-output');
 
-  let counterValue = 0;
+inputField.addEventListener('input', onInputChange);
 
-  decrementButton.addEventListener('click', () => {
-    counterValue -= 1;
-    updateValue();
-  });
+function onInputChange(event) {
+  const inputValue = event.currentTarget.value;
 
-  incrementButton.addEventListener('click', () => {
-    counterValue += 1;
-    updateValue();
-  });
-
-  function updateValue() {
-    valueSpan.textContent = counterValue;
-  }
+  nameLabel.textContent = inputValue === '' ? 'Anonymous' : inputValue;
+}
